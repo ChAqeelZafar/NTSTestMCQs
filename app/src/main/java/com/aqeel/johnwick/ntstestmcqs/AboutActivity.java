@@ -14,7 +14,7 @@ public class AboutActivity extends AppCompatActivity {
 
         View aboutPage = new AboutPage(this)
                 .isRTL(false)
-                .setImage(R.drawable.infipic)
+                .setImage(R.drawable.aboutpiccrop)
                 .addGroup("Connect with us")
                 .addEmail("aqeelzafar19@gmail.com")
                 .addFacebook("ch.aqeel.zafar")

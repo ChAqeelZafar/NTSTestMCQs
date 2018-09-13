@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -52,5 +54,60 @@ public class ResultActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.mShare:
+
+                shareCall();
+
+                break;
+
+            case R.id.mInfo:
+                infoCall();
+                break;
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
+
+    }
+
+
+    void infoCall(){
+        Intent intent = new Intent(ResultActivity.this, AboutActivity.class);
+        startActivity(intent);
+    }
+
+    void shareCall(){
+        Intent  i = new Intent(
+
+                android.content.Intent.ACTION_SEND);
+
+        i.setType("text/plain");
+
+        i.putExtra(
+
+                android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.aqeel.johnwick.ntstestmcqs");
+
+        startActivity(Intent.createChooser(
+
+                i,
+
+                "Share Using"));
     }
 }

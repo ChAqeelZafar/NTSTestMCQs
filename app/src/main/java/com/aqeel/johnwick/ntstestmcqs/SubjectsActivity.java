@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -100,5 +103,60 @@ public class SubjectsActivity extends AppCompatActivity {
             recyclerView.setVisibility(View.VISIBLE);
             loadingCard.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu, menu);
+
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+
+            case R.id.mShare:
+
+                shareCall();
+
+                break;
+
+            case R.id.mInfo:
+                infoCall();
+                break;
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
+
+    }
+
+
+    void infoCall(){
+        Intent intent = new Intent(SubjectsActivity.this, AboutActivity.class);
+        startActivity(intent);
+    }
+
+    void shareCall(){
+        Intent  i = new Intent(
+
+                android.content.Intent.ACTION_SEND);
+
+        i.setType("text/plain");
+
+        i.putExtra(
+
+                android.content.Intent.EXTRA_TEXT, "https://play.google.com/store/apps/details?id=com.aqeel.johnwick.ntstestmcqs");
+
+        startActivity(Intent.createChooser(
+
+                i,
+
+                "Share Using"));
     }
 }

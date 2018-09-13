@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.vvhvb.hesselfeenstra.vvheerenveenseboys.MainActivity">
     <item
-        android:id="@+id/share"
-        android:icon="@drawable/mshare"
-        android:title="Share"
-        app:showAsAction="always"
-        app:actionProviderClass="android.widget.ShareActionProvider" />
+        android:id="@+id/mShare"
+        android:orderInCategory="100"
+        android:title="share using"
+        android:icon="@drawable/ic_share_black_24dp"
+        app:showAsAction="ifRoom" />
+
+
+    <item
+        android:id="@+id/mInfo"
+        android:orderInCategory="100"
+        android:title=""
+        android:icon="@drawable/ic_info_outline_black_24dp"
+        app:showAsAction="ifRoom" />
+    <!--<&#45;&#45; here is the share action menu item &ndash;&gt;-->
+    <item
+        android:id="@+id/menu_item_share"
+        app:showAsAction="ifRoom"
+        android:title="" />
 </menu>
