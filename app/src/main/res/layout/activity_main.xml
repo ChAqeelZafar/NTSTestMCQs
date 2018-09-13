@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="184dp"
+        android:layout_height="155dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ntslogo" />
+
+    <Button
+        android:id="@+id/main_btn_link"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+
+        android:background="@drawable/custombtn"
+        android:shadowColor="#FF8C00"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="Nts Latest Updates!"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/main_btn_subjects"
+        app:layout_constraintStart_toStartOf="@+id/main_btn_subjects"
+        app:layout_constraintTop_toBottomOf="@+id/main_btn_subjects" />
+
+    <ImageButton
+        android:id="@+id/main_btn_about"
+        android:layout_width="86dp"
+        android:layout_height="82dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:maxWidth="100dp"
+        android:maxHeight="100dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/main_btn_rate"
+        app:layout_constraintStart_toStartOf="@+id/main_btn_link"
+        app:layout_constraintTop_toTopOf="@+id/main_btn_rate"
+        app:srcCompat="@drawable/info" />
+
+    <ImageButton
+        android:id="@+id/main_btn_rate"
+        android:layout_width="86dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:maxWidth="80dp"
+        android:maxHeight="80dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageButton3"
+        app:layout_constraintStart_toEndOf="@+id/main_btn_about"
+        app:layout_constraintTop_toBottomOf="@+id/main_btn_link"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/rateus" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="86dp"
+        android:layout_height="82dp"
+        android:adjustViewBounds="true"
+        android:background="@color/transparent"
+        android:maxWidth="80dp"
+        android:maxHeight="80dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/main_btn_rate"
+        app:layout_constraintEnd_toEndOf="@+id/main_btn_link"
+        app:layout_constraintTop_toTopOf="@+id/main_btn_rate"
+        app:srcCompat="@drawable/share" />
+
+    <Button
+        android:id="@+id/main_btn_subjects"
+        android:layout_width="270dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="30dp"
+
+        android:background="@drawable/custombtn"
+        android:shadowColor="#FF8C00"
+        android:shadowDx="0"
+        android:shadowDy="0"
+        android:shadowRadius="5"
+        android:text="SUBJECTS"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

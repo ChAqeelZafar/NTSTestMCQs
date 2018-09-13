@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "672023015209",
+    "firebase_url": "https://ntstestmcqs.firebaseio.com",
+    "project_id": "ntstestmcqs",
+    "storage_bucket": "ntstestmcqs.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672023015209:android:c78c4d5fb70f7886",
+        "android_client_info": {
+          "package_name": "com.aqeel.johnwick.ntstestmcqs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672023015209-819em5q4a676uinu68g689qdur9cof7v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.aqeel.johnwick.ntstestmcqs",
+            "certificate_hash": "76cbf74fa140327de1dfd089302644bbc7f3c77c"
+          }
+        },
+        {
+          "client_id": "672023015209-c3ut43s2pihueoqt86ltoqqdtalnfokq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPLRYIsFbETIcEd9Mnd3w3sMaBtec7Qkg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672023015209-c3ut43s2pihueoqt86ltoqqdtalnfokq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
