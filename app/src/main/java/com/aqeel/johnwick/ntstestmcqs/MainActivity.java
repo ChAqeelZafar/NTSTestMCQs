@@ -15,11 +15,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     Button subjectsBtn, ntsLinkBtn;
     ImageButton infoBtn, rateBtn, shareBtn ;
+    TextView internetUnavailable;
 
 
 
@@ -33,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         infoBtn = findViewById(R.id.main_btn_about);
         rateBtn = findViewById(R.id.main_btn_rate);
         shareBtn = findViewById(R.id.main_btn_share);
+        internetUnavailable = findViewById(R.id.main_text_internetUnavailable);
 
 
         infoBtn.setOnClickListener(new View.OnClickListener() {
@@ -52,8 +55,16 @@ public class MainActivity extends AppCompatActivity {
         subjectsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SubjectsActivity.class);
-                startActivity(intent);
+
+                if(haveNetworkConnection()){
+                    Intent intent = new Intent(MainActivity.this, SubjectsActivity.class);
+                    startActivity(intent);
+                }
+                else{
+                    isError(true);
+
+                }
+
             }
         });
 
@@ -68,6 +79,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 rateApp();
+            }
+        });
+
+        internetUnavailable.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(getIntent());
             }
         });
 
@@ -182,5 +201,24 @@ public class MainActivity extends AppCompatActivity {
         }
         intent.addFlags(flags);
         return intent;
+    }
+
+    void isError(boolean isShow){
+        if(isShow){
+            internetUnavailable.setVisibility(View.VISIBLE);
+            subjectsBtn.setVisibility(View.GONE);
+            ntsLinkBtn.setVisibility(View.GONE);
+            infoBtn.setVisibility(View.GONE);
+            rateBtn.setVisibility(View.GONE);
+            shareBtn.setVisibility(View.GONE);
+        }
+        else{
+            internetUnavailable.setVisibility(View.GONE);
+            subjectsBtn.setVisibility(View.VISIBLE);
+            ntsLinkBtn.setVisibility(View.VISIBLE);
+            infoBtn.setVisibility(View.VISIBLE);
+            rateBtn.setVisibility(View.VISIBLE);
+            shareBtn.setVisibility(View.VISIBLE);
+        }
     }
 }

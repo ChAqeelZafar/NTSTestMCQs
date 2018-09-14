@@ -11,6 +11,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -52,13 +53,14 @@ public class QuizActivity extends AppCompatActivity {
 
     RadioGroup radioGroup;
     RadioButton o1Radio, o2Radio, o3Radio, o4Radio;
-    String subjectName, forceName ;
+    String subjectName ;
 
     Button nextBtn, skipBtn, checkBtn ;
 
 
     int correctScore = 0 ;
-    //FirebaseFirestore firestore;
+
+
 
 
     ArrayList<Question>  questionList = new ArrayList<>();
@@ -68,9 +70,7 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
 
-//        subjectName = getIntent().getStringExtra("subjectName");
-//        forceName = getIntent().getStringExtra("forceName");
-//        spinner = findViewById(R.id.quiz_spinner_totalQuestions);
+
         statementText = findViewById(R.id.quiz_questionStatement);
         totalText = findViewById(R.id.quiz_text_total);
         radioGroup = findViewById(R.id.quiz_radiogroup);
@@ -84,31 +84,15 @@ public class QuizActivity extends AppCompatActivity {
         o3Radio = findViewById(R.id.quiz_radio_o3);
         o4Radio = findViewById(R.id.quiz_radio_o4);
 
-        //firestore = FirebaseFirestore.getInstance();
+
+
+
+
+
 
         loadFirstQuestion();
 
-//        Integer[] items = new Integer[]{20, 30, 40, 50};
-//        ArrayAdapter<Integer> adapter = new ArrayAdapter<Integer>(this, android.R.layout.simple_spinner_item, items);
 
-
-
-//        spinner.setAdapter(adapter);
-
-//        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                totalQuestions = Integer.parseInt(adapterView.getSelectedItem().toString());
-//                totalText.setText(liveQuestion + "/" + totalQuestions);
-//
-//
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> adapterView) {
-//
-//            }
-//        });
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,13 +127,13 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     void startQuiz(int liveQuestion){
-        //Toast.makeText(Quiz.this, questionList.size() + "size" , Toast.LENGTH_SHORT).show();
+
         totalText.setText(liveQuestion + 1 + "/" + totalQuestions);
         Question question = questionList.get(liveQuestion);
         statementText.setText(question.getStatement());
         correctText.setVisibility(View.GONE);
         checkBtn.setText("SHOW");
-        //Toast.makeText(Quiz.this, question.getStatement()  , Toast.LENGTH_SHORT).show();
+
 
         radioGroup.clearCheck();
         o1Radio.setText(question.getOption1());
@@ -178,10 +162,8 @@ public class QuizActivity extends AppCompatActivity {
 
                 if (o1Radio.isChecked() && o1Radio.getText().toString().equals(correctText.getText()) ||  o2Radio.isChecked() && o2Radio.getText().toString().equals(correctText.getText())  ||  o3Radio.isChecked() && o3Radio.getText().toString().equals(correctText.getText()) || o4Radio.isChecked() && o4Radio.getText().toString().equals(correctText.getText())) {
                     correctScore++;
-                    Toast.makeText(QuizActivity.this, "Correct", Toast.LENGTH_SHORT).show();
 
                 } else {
-                    Toast.makeText(QuizActivity.this, "Wrong", Toast.LENGTH_SHORT).show();
 
                 }
 

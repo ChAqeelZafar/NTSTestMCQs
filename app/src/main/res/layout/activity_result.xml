@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/custombtn"
+    android:background="@drawable/custombackground"
     tools:context=".ResultActivity">
 
     <androidx.cardview.widget.CardView
@@ -12,8 +12,10 @@
         android:layout_width="220dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#1B1B1B"
+        app:cardCornerRadius="5dp"
         app:cardElevation="4dp"
-        app:contentPadding="15dp"
+        app:contentPadding="10dp"
         app:layout_constraintStart_toStartOf="@+id/cardView3"
         app:layout_constraintTop_toBottomOf="@+id/cardView3">
 
@@ -23,6 +25,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="TextView"
+            android:textColor="#FFFF"
             android:textSize="24sp" />
     </androidx.cardview.widget.CardView>
 
@@ -31,8 +34,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#1B1B1B"
+        app:cardCornerRadius="5dp"
         app:cardElevation="4dp"
-        app:contentPadding="15dp"
+        app:contentPadding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/cardView4"
         app:layout_constraintStart_toStartOf="@+id/cardView4"
         app:layout_constraintTop_toBottomOf="@+id/cardView4">
@@ -43,6 +48,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="TextView"
+            android:textColor="#FFFF"
             android:textSize="24sp" />
     </androidx.cardview.widget.CardView>
 
@@ -51,8 +57,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        app:cardBackgroundColor="#1B1B1B"
+        app:cardCornerRadius="5dp"
         app:cardElevation="4dp"
-        app:contentPadding="15dp"
+        app:contentPadding="10dp"
         app:layout_constraintEnd_toEndOf="@+id/cardview1"
         app:layout_constraintStart_toStartOf="@+id/cardview1"
         app:layout_constraintTop_toBottomOf="@+id/cardview1">
@@ -63,6 +71,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="TextView"
+            android:textColor="#FFFF"
             android:textSize="24sp" />
     </androidx.cardview.widget.CardView>
 
@@ -75,8 +84,10 @@
         android:layout_marginTop="55dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
+        app:cardBackgroundColor="#1B1B1B"
+        app:cardCornerRadius="5dp"
         app:cardElevation="4dp"
-        app:contentPadding="15dp"
+        app:contentPadding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -87,6 +98,7 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="TextView"
+            android:textColor="#FFFF"
             android:textSize="24sp" />
     </androidx.cardview.widget.CardView>
 
@@ -98,6 +110,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="BACK"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/cardView5"
         app:layout_constraintHorizontal_bias="0.507"

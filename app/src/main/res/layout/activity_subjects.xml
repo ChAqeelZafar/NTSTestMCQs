@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     tools:context=".SubjectsActivity">
 
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/subjects_recycler_subjects"
         android:layout_width="0dp"
