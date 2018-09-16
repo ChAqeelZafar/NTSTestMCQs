@@ -17,6 +17,10 @@ import android.widget.Toast;
 
 import com.aqeel.johnwick.ntstestmcqs.Adapters.SubjectAdapter;
 import com.aqeel.johnwick.ntstestmcqs.Models.Subject;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,6 +28,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class SubjectsActivity extends AppCompatActivity {
@@ -33,6 +38,8 @@ public class SubjectsActivity extends AppCompatActivity {
     List<Subject> subjectList = new ArrayList<>();
     String NTS = "nts";
     CardView loadingCard ;
+    AdView adView, loadingAdview;
+
 
 
 
@@ -40,6 +47,11 @@ public class SubjectsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_subjects);
+
+        loadAd();
+
+
+
 
 
         recyclerView = findViewById(R.id.subjects_recycler_subjects);
@@ -73,6 +85,8 @@ public class SubjectsActivity extends AppCompatActivity {
 
                             }
 
+                            Collections.shuffle(subjectList);
+
 
                             printsubjects() ;
                         } else {
@@ -90,6 +104,7 @@ public class SubjectsActivity extends AppCompatActivity {
     }
 
     void printsubjects(){
+
         recyclerView.setAdapter(new SubjectAdapter(subjectList, this));
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         isLoading(false);
@@ -160,5 +175,18 @@ public class SubjectsActivity extends AppCompatActivity {
                 i,
 
                 "Share Using"));
+    }
+
+    void loadAd(){
+
+        MobileAds.initialize(this, getString(R.string.ad_app_id));
+        adView = findViewById(R.id.subject_adView);
+        loadingAdview = findViewById(R.id.subject_loading_adView);
+        AdRequest request = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        AdRequest requestLoading = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+
+
+        adView.loadAd(request);
+        loadingAdview.loadAd(requestLoading);
     }
 }

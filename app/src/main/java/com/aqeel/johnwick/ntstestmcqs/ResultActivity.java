@@ -12,14 +12,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class ResultActivity extends AppCompatActivity {
     TextView subjectnameText, percentText, attemptText, statusText ;
     Button backBtn ;
+
+    AdView adViewUp, adViewDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        loadAd();
         subjectnameText = findViewById(R.id.result_text_subjectname);
         percentText = findViewById(R.id.result_text_percentage);
         attemptText = findViewById(R.id.result_text_attempt);
@@ -31,7 +39,7 @@ public class ResultActivity extends AppCompatActivity {
         int correct = Integer.parseInt(getIntent().getStringExtra("correctQuestions"));
         double per = ((correct*100)/total);
         percentText.setText(per + "%");
-        attemptText.setText("Attempted : " + correct +" Total : " + total);
+        attemptText.setText("Correct : " + correct +" Total : " + total);
         if(per<51){
             subjectnameText.setText("Try Again!");
             statusText.setText("Fail");
@@ -47,14 +55,27 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
-                Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+                Intent intent = new Intent(ResultActivity.this, SubjectsActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);
             }
         });
 
 
+
+
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        Intent intent = new Intent(ResultActivity.this, SubjectsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,5 +130,18 @@ public class ResultActivity extends AppCompatActivity {
                 i,
 
                 "Share Using"));
+    }
+
+    void loadAd(){
+
+        MobileAds.initialize(this, getString(R.string.ad_app_id));
+        adViewUp = findViewById(R.id.result_up_adView);
+        adViewDown = findViewById(R.id.result_down_adView);
+        AdRequest requestUp = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        AdRequest requestDown = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+
+
+        adViewUp.loadAd(requestUp);
+        adViewDown.loadAd(requestDown);
     }
 }

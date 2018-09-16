@@ -26,6 +26,9 @@ import android.widget.Toast;
 
 import com.aqeel.johnwick.ntstestmcqs.Models.Question;
 import com.aqeel.johnwick.ntstestmcqs.Models.Subject;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -60,6 +63,8 @@ public class QuizActivity extends AppCompatActivity {
 
     int correctScore = 0 ;
 
+    AdView adViewUp, adViewDown;
+
 
 
 
@@ -69,6 +74,8 @@ public class QuizActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        loadAd();
 
 
         statementText = findViewById(R.id.quiz_questionStatement);
@@ -136,11 +143,51 @@ public class QuizActivity extends AppCompatActivity {
 
 
         radioGroup.clearCheck();
-        o1Radio.setText(question.getOption1());
-        o2Radio.setText(question.getOption2());
-        o3Radio.setText(question.getOption3());
-        o4Radio.setText(question.getOption4());
-        correctText.setText(question.getCorrect());
+        if(question.getOption1().equals("")){
+            o1Radio.setVisibility(View.GONE);
+        }
+        else{
+            o1Radio.setVisibility(View.VISIBLE);
+            o1Radio.setText(question.getOption1());
+
+        }
+
+        if(question.getOption2().equals("")){
+            o2Radio.setVisibility(View.GONE);
+        }
+        else{
+            o2Radio.setVisibility(View.VISIBLE);
+            o2Radio.setText(question.getOption2());
+
+
+        }
+
+        if(question.getOption3().equals("")){
+            o3Radio.setVisibility(View.GONE);
+        }
+        else{
+            o3Radio.setVisibility(View.VISIBLE);
+            o3Radio.setText(question.getOption3());
+
+        }
+
+        if(question.getOption4().equals("")){
+            o4Radio.setVisibility(View.GONE);
+        }
+        else{
+            o4Radio.setVisibility(View.VISIBLE);
+            o4Radio.setText(question.getOption4());
+
+        }
+
+        if(question.getCorrect().equals("")){
+            correctText.setText("Not Available");
+
+        }
+        else{
+            correctText.setText(question.getCorrect());
+
+        }
 
     }
 
@@ -198,7 +245,7 @@ public class QuizActivity extends AppCompatActivity {
 
         Intent intent = new Intent(QuizActivity.this, ResultActivity.class);
         intent.putExtra("subjectName", subjectName);
-        intent.putExtra("correctQuestions", correctScore + "");
+        intent.putExtra("correctQuestions", ++correctScore + "");
         intent.putExtra("totalQuestions", totalQuestions + "");
         startActivity(intent);
     }
@@ -256,6 +303,20 @@ public class QuizActivity extends AppCompatActivity {
                 i,
 
                 "Share Using"));
+    }
+
+
+    void loadAd(){
+
+        MobileAds.initialize(this, getString(R.string.ad_app_id));
+        adViewUp = findViewById(R.id.quiz_up_adView);
+        adViewDown = findViewById(R.id.quiz_down_adView);
+        AdRequest requestUp = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        AdRequest requestDown = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+
+
+        adViewUp.loadAd(requestUp);
+        adViewDown.loadAd(requestDown);
     }
 
 

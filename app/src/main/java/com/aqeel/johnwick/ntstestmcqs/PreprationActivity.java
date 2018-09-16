@@ -21,6 +21,9 @@ import android.widget.Toast;
 
 import com.aqeel.johnwick.ntstestmcqs.Models.Question;
 import com.aqeel.johnwick.ntstestmcqs.Models.Subject;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -54,10 +57,14 @@ public class PreprationActivity extends AppCompatActivity {
 
     String subjectId, chapterId, chapterName ;
 
+    AdView adViewUp, adViewDown;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_prepration);
+
+        loadAd();
 
         startQuizBtn = findViewById(R.id.prepration_btn_startQuiz);
         totalQuestionsText = findViewById(R.id.prepration_text_totalQuestions);
@@ -285,6 +292,19 @@ public class PreprationActivity extends AppCompatActivity {
                 i,
 
                 "Share Using"));
+    }
+
+    void loadAd(){
+
+        MobileAds.initialize(this, getString(R.string.ad_app_id));
+        adViewUp = findViewById(R.id.prepration_up_adView);
+        adViewDown = findViewById(R.id.prepration_down_adView);
+        AdRequest requestUp = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        AdRequest requestDown = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+
+
+        adViewUp.loadAd(requestUp);
+        adViewDown.loadAd(requestDown);
     }
 }
 

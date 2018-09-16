@@ -16,6 +16,9 @@ import android.widget.Toast;
 
 import com.aqeel.johnwick.ntstestmcqs.Adapters.ChapterAdapter;
 import com.aqeel.johnwick.ntstestmcqs.Models.Chapter;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -23,6 +26,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ChaptersActivity extends AppCompatActivity {
@@ -33,11 +37,14 @@ public class ChaptersActivity extends AppCompatActivity {
     List<Chapter> chapterList = new ArrayList<>();
     CardView loadingCard ;
 
+    AdView adView, loadingAdview;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chapters);
 
+        loadAd();
 
 
 
@@ -82,6 +89,7 @@ public class ChaptersActivity extends AppCompatActivity {
 
 
                             }
+                            Collections.shuffle(chapterList);
                             printsubjects() ;
                         } else {
                             Toast.makeText(ChaptersActivity.this, "Failed to connect Internet\nChapters Loading Failed", Toast.LENGTH_SHORT).show();
@@ -164,5 +172,18 @@ public class ChaptersActivity extends AppCompatActivity {
                 i,
 
                 "Share Using"));
+    }
+
+
+    void loadAd(){
+
+        MobileAds.initialize(this, getString(R.string.ad_app_id));
+        adView = findViewById(R.id.chapters_adView);
+        loadingAdview = findViewById(R.id.chapter_loading_adView);
+        AdRequest request = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        AdRequest requestLoading = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+
+        loadingAdview.loadAd(requestLoading);
+        adView.loadAd(request);
     }
 }

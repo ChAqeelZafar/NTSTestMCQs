@@ -17,11 +17,17 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 public class MainActivity extends AppCompatActivity {
 
     Button subjectsBtn, ntsLinkBtn;
     ImageButton infoBtn, rateBtn, shareBtn ;
     TextView internetUnavailable;
+
+    AdView adView;
 
 
 
@@ -29,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        loadAd();
 
         subjectsBtn = findViewById(R.id.main_btn_subjects);
         ntsLinkBtn = findViewById(R.id.main_btn_link);
@@ -220,5 +228,14 @@ public class MainActivity extends AppCompatActivity {
             rateBtn.setVisibility(View.VISIBLE);
             shareBtn.setVisibility(View.VISIBLE);
         }
+    }
+
+    void loadAd(){
+
+        MobileAds.initialize(this, getString(R.string.ad_app_id));
+        adView = findViewById(R.id.main_adView);
+        AdRequest request = new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+
+        adView.loadAd(request);
     }
 }

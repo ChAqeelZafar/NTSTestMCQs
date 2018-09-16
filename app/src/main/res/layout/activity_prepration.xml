@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/custombackground"
@@ -13,16 +14,19 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="1dp"
         app:contentPadding="0dp"
         app:layout_constraintBottom_toTopOf="@+id/questionshow_card_options"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prepration_up_adView"
+        app:layout_constraintVertical_bias="0.79">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,10 +40,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:gravity="center"
                 android:text="TextView"
                 android:textSize="18sp"
@@ -58,7 +62,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="1dp"
         app:contentPadding="0dp"
@@ -68,7 +72,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">>
 
@@ -81,7 +85,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:text="TextView"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -96,7 +100,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:text="TextView"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/question_text_option1" />
@@ -111,7 +115,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:text="TextView"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/question_text_option2" />
@@ -126,7 +130,7 @@
                 android:layout_marginEnd="12dp"
                 android:layout_marginRight="12dp"
                 android:text="TextView"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/question_text_option3" />
@@ -136,26 +140,26 @@
     <Button
         android:id="@+id/question_btn_next"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
-        android:text="NEXT"
+        android:layout_marginBottom="8dp"
         android:background="#FFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="NEXT"
+        app:layout_constraintBottom_toTopOf="@+id/prepration_down_adView"
         app:layout_constraintEnd_toEndOf="parent" />
 
 
     <Button
         android:id="@+id/question_btn_previous"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="34dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:background="#FFFF"
         android:text="PREVIOUS"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/prepration_down_adView"
         app:layout_constraintStart_toStartOf="parent" />
 
 
@@ -228,13 +232,12 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
-        android:layout_marginBottom="8dp"
         android:text="TextView"
         android:textColor="#FFFF"
         app:layout_constraintBottom_toBottomOf="@+id/prepration_btn_startQuiz"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.876" />
+        app:layout_constraintTop_toTopOf="@+id/prepration_btn_startQuiz"
+        app:layout_constraintVertical_bias="0.51" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -244,10 +247,10 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="10dp"
         app:cardCornerRadius="4dp"
         app:cardElevation="1dp"
-        app:contentPadding="10dp"
+        app:contentPadding="5dp"
         app:layout_constraintBottom_toTopOf="@+id/question_btn_next"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -264,15 +267,43 @@
         android:id="@+id/prepration_btn_startQuiz"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="150dp"
-        android:layout_height="55dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="8dp"
         android:text="Start Quiz"
         android:textColor="#FFFF00"
         android:textColorLink="#FFFF00"
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/questionshow_cardview_statement"
         app:layout_constraintStart_toStartOf="@+id/questionshow_cardview_statement"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/prepration_up_adView"
         app:layout_constraintVertical_bias="0.93" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/prepration_down_adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+
+
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/ad_unit_id"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="453dp" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/prepration_up_adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+
+
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/ad_unit_id"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
